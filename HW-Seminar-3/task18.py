@@ -12,10 +12,12 @@
 import random
 number_of_elements = int(input("Введите количество элементов: "))
 number = int(input("Введите число, с которым необходимо сравнить: "))
-shift = 5
-index = 0
 
-my_list = [random.randint(-(number+shift), number + shift) for i in range(number_of_elements)]
+shift = 5
+
+my_list = [random.randint(-(abs(number)+shift), abs(number) + shift) for i in range(number_of_elements)]
+
+index = 0
 
 for i in range(len(my_list)):
     if abs(number - my_list[i]) < abs(number - my_list[index]):
