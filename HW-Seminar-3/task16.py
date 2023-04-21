@@ -11,10 +11,10 @@
 import random
 number_of_elements = int(input("Введите количество элементов: "))
 number = int(input("Введите число, которое требуется найти: "))
-delta = 5
+shift = 5
 count = 0
 
-my_list = [random.randint(0, number + delta) for i in range(number_of_elements)]
+my_list = [random.randint(0, number + shift) for i in range(number_of_elements)]
 
 for item in my_list:
     if item == number:
