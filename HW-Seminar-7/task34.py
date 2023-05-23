@@ -12,7 +12,7 @@
 
 def is_a_rytm(poem) -> bool:
     vowels = "аеёиоуыэюя"
-    return len(set(map(lambda y: len(list(filter(lambda x: x in vowels, y))), poem))) == 1
+    return len(set(map(lambda y: len(list(filter(lambda x: x.lower() in vowels, y))), poem))) == 1
 
 if is_a_rytm(input("Введите стихотворение: ").split()):
     print("Парам пам-пам")
