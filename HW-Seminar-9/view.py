@@ -22,9 +22,14 @@ def print_contacts(book: list[dict[str, str]], error: str):
     else:
         print_message(error)
 
-def input_contact() -> dict[str, str]:
+def input_contact(message) -> dict[str, str]:
     new = {}
-    print(text.input_new_contact)
+    print(message)
     for key, txt in text.new_contact.items():
-        new[key] = input(txt)
-        return new
+        value = input(txt)
+        if value:
+            new[key] = value
+    return new
+
+def input_search(message) -> str:
+    return input(message)
