@@ -15,25 +15,20 @@ def print_message(message: str):
 
 def print_notes(notes: list[dict[str, str]], error: str):
     if notes:
-        print('\n' + '='*101)
+        print('\n' + '='*150)
         for i, note in enumerate(notes, 1):
-            #print(f'{i:>3}. {note.get("ID"):<10} | {note.get("HEADER"):<20} | {note.get("NOTE"):<100} | {note.get("DATETIME"):<20}')
-            #print(f'{i:>3}. {note.get("ID"):<50} | {note.get("HEADER"):<20} | {note.get("NOTE"):<20}')
-            print(f'{i:>3}. {note.get("ID"):<50} | {note.get("HEADER"):<20} | {note.get("NOTE"):<20}')
-        print('\n' + '='*101)
+            print(f'{i:>3}. {note.get("ID"):<10} | {note.get("HEADER"):<20} | {note.get("NOTE"):<80} | {note.get("DATETIME")}')
+        print('\n' + '='*150)
     else:
         print_message(error)
 
 def input_note(message) -> dict[str, str]:
     new = {}
     print(message)
-    new['ID'] = 1
     for key, txt in text.new_note.items():
         value = input(txt)
         if value:
             new[key] = value
-    from datetime import datetime
-    new['DATETIME'] = datetime.now()
     return new
 
 def input_search(message) -> str:

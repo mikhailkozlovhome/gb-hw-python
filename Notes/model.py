@@ -1,4 +1,7 @@
 class Notes:
+
+    current_id = 0
+
     def __init__(self, path: str = 'Notes.csv'):
         self._notes: list[dict[str, str]] = []
         self._path = path
@@ -10,10 +13,11 @@ class Notes:
                 for note in data:
                     note = note.strip().split(';')
                     new = {'ID' : note[0], 'HEADER' : note[1], 'NOTE' : note[2], 'DATETIME' : note[3]}
+                    self.current_id = note[0];
                     self._notes.append(new)
                 file.close()
         except FileNotFoundError:
-            print("FFFFFFFFFFFFFFFFFFFFFFFF")
+            print("Файл остутствует. Добавьте новую заметку и сохраните файл. Файл создасться автоматически.")
 
     def get(self):
         return self._notes
@@ -38,11 +42,11 @@ class Notes:
             #index += 1
             find_note = {}
             for field in note.values():
-                if word.lower() in field.lower():
+                if word.lower() in str(field).lower():
                     find_note['ID'] = note.get('ID')
                     find_note['HEADER'] = note.get('HEADER')
                     find_note['NOTE'] = note.get('NOTE')
-                    find_note['DATETIME'] = note.get('DATETIME') #index - 1
+                    find_note['DATETIME'] = note.get('DATETIME')
                     result.append(find_note)
                     break
         return result

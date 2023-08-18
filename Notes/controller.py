@@ -20,6 +20,10 @@ def start():
                 view.print_notes(notes, text.notes_empty)
             case 4:
                 note = view.input_note(text.input_new_note)
+                my_notes.current_id += 1
+                note['ID'] = my_notes.current_id
+                from datetime import datetime
+                note['DATETIME'] = datetime.now()
                 name = my_notes.add(note)
                 view.print_message(text.new_note_successful(name))
             case 5:
